@@ -1,6 +1,6 @@
 module logger_service
 
-go 1.19
+go 1.18
 
 require (
 	github.com/joho/godotenv v1.4.0
@@ -13,3 +13,5 @@ require (
 	go.uber.org/atomic v1.7.0 // indirect
 	go.uber.org/multierr v1.6.0 // indirect
 )
+
+replace github.com/uber-go/atomic => github.com/uber-go/atomic v1.4.0
