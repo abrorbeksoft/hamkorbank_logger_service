@@ -49,6 +49,5 @@ func (r RabbitMQ) RunConsumers(ctx context.Context) {
 
 	}
 
-	wg.Add(1)
 	wg.Wait()
 }

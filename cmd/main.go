@@ -12,7 +12,7 @@ import (
 func main() {
 
 	cfg := config.Load()
-	log := logger.NewLogger(cfg.LogLevel, "logger_service")
+	log := logger.NewLogger(cfg.LogLevel, logger.LevelInfo)
 
 	conn, err := amqp.Dial(fmt.Sprintf("amqp://%s:%s@%s:%d/", cfg.RabbitMQUser, cfg.RabbitMQPassword, cfg.RabbitMQHost, cfg.RabbitMQPort))
 	if err != nil {

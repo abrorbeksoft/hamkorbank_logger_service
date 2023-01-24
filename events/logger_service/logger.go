@@ -17,6 +17,17 @@ type triggerListener struct {
 	conn     *amqp.Connection
 }
 
+type NotFound struct {
+	NotFound string `json:"not_found"`
+}
+
+type Phone struct {
+	ID        string `json:"id"`
+	Phone     string `json:"phone"`
+	CreatedAt string `json:"created_at"`
+	UpdatedAt string `json:"updated_at"`
+}
+
 func NewTriggerListenerService(log logger.LoggerI, rabbit rabbitmq.RabbitMQI) *triggerListener {
 	return &triggerListener{
 		log:      log,

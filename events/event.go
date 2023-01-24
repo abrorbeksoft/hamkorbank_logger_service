@@ -21,8 +21,6 @@ func NewEvents(cfg config.Config, log logger.LoggerI, ch *amqp.Channel) (*PubSub
 		return nil, err
 	}
 
-	initPublishers(rabbit)
-
 	return &PubSubServer{
 		cfg:      cfg,
 		log:      log,
@@ -34,8 +32,4 @@ func (s *PubSubServer) InitServices(ctx context.Context) {
 	triggerListenerService := logger_service.NewTriggerListenerService(s.log, s.rabbitmq)
 	triggerListenerService.RegisterConsumers()
 	s.rabbitmq.RunConsumers(ctx)
-}
-
-func initPublishers(rabbit rabbitmq.RabbitMQI) {
-	_ = rabbit.AddPublisher("v1.websocket_service.response")
 }
