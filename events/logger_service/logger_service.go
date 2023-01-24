@@ -33,7 +33,7 @@ func (t *triggerListener) ListenInfo(ctx context.Context, data []byte) error {
 }
 
 func (t *triggerListener) ListenDebug(ctx context.Context, data []byte) error {
-	var resp Message
+	var resp = &Message{}
 	err := json.Unmarshal(data, &resp)
 	if err != nil {
 		t.log.Error("error while consuming ", logger.Error(err))

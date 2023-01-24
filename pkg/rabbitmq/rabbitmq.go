@@ -2,6 +2,7 @@ package rabbitmq
 
 import (
 	"context"
+	"fmt"
 	amqp "github.com/rabbitmq/amqp091-go"
 	"logger_service/config"
 	"sync"
@@ -40,6 +41,7 @@ func (r RabbitMQ) RunConsumers(ctx context.Context) {
 			defer wg.Done()
 			for d := range c.message {
 				if err := c.handler(ctx, d.Body); err != nil {
+					fmt.Println("Error on consumer ", err.Error())
 					panic(err)
 				}
 			}
